@@ -1,21 +1,21 @@
 module.exports = {
   name: 'ready',
   async execute(client) {
-    console.log('Ticket Bot ready!')
-    console.log('Thank you very much for using Ticket Bot! Developed with the ❤️ by Sayrix');
+    console.log('Ticket Bot is ready!')
+    console.log('2022 © HappyTimes (Ticket) Bot');
     const oniChan = client.channels.cache.get(client.config.ticketChannel)
 
     function sendTicketMSG() {
       const embed = new client.discord.MessageEmbed()
         .setColor('6d6ee8')
         .setAuthor('Ticket', client.user.avatarURL())
-        .setDescription('Cliquez sur le bouton ci-dessous pour ouvrir un ticket')
+        .setDescription('Klik op de onderstaande knop om een ticket te openen')
         .setFooter(client.config.footerText, client.user.avatarURL())
       const row = new client.discord.MessageActionRow()
         .addComponents(
           new client.discord.MessageButton()
           .setCustomId('open-ticket')
-          .setLabel('Ouvrir un ticket')
+          .setLabel('Open een ticket')
           .setEmoji('✉️')
           .setStyle('PRIMARY'),
         );
@@ -30,7 +30,7 @@ module.exports = {
 
     async function fetchMore(channel, limit) {
       if (!channel) {
-        throw new Error(`Expected channel, got ${typeof channel}.`);
+        throw new Error(`Verwacht kanaal, kreeg ${typeof channel}.`);
       }
       if (limit <= 100) {
         return channel.messages.fetch({
