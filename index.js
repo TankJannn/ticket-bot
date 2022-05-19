@@ -6,6 +6,21 @@ const {
 } = require('discord.js');
 const config = require('./config.json');
 
+client.on("ready", async () => {
+  let servers = await client.guilds.cache.size
+  let servercount = await client.guilds.cache.reduce((a,b) => a+b.memberCount, 0 )
+
+const activites = [
+  `● HappyTimes | ${servercount}`,
+  `● https://dsc.gg/happytimes`
+]
+
+setInterval(()=>{
+  const stauts = activites[Math.floor(Math.random() * activites.length)]
+  client.user.setPresence({ activites: [{ name: `${status}` }] })
+}, 5000)
+})
+
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS],
 });
